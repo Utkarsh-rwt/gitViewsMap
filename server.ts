@@ -1,5 +1,5 @@
-import app from "./src/app.ts"
-import ConnectToDB from "./src/config/db.ts";
+import app from "./src/app"
+import ConnectToDB from "./src/config/db";
 
 
 async function start() {
