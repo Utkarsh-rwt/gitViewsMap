@@ -7,9 +7,9 @@ import mapRouter from "./routes/map"
 
 app.use(express.json());
 app.use(morgan("dev"))
-app.use(Badgerouter);
-app.use(mapRouter);
-app.use(express.static("public"));
+app.use("/", Badgerouter);
+app.use("/", mapRouter);
+app.use("/", express.static("public"));
 
 
 
