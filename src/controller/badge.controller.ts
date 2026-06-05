@@ -1,9 +1,8 @@
-import mongoose from "mongoose";
+
 import { Request,Response } from "express";
 import User from "../models/user";
 import Visitor from "../models/visitor.model";
-import { stringify } from "node:querystring";
-import { json } from "node:stream/consumers";
+
 
 async function getBadge(req: Request,res: Response) {
     const {username} = req.params;
@@ -65,14 +64,6 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="108" height="20" rol
 try{                                                      // storing the data of visitor
 
     const ip = req.ip;
-    const isthere =  await Visitor.findOne({
-        ip:ip
-    })
-
-    if(isthere){
-        return res.send(svg).status(269);
-    }
-
     let  information:any = await  fetch(`http://ip-api.com/json/${ip}`);
     information =  await information.json();
 
