@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(morgan("dev"))
 app.use(Badgerouter);
 app.use(mapRouter);
+app.use(express.static("public"));
 
 
 
