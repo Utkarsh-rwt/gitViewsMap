@@ -86,7 +86,8 @@ try{                                                      // storing the data of
     console.log(`failed to get visitors info ${err}`)
 
 }
-
+res.setHeader("Content-Type", "image/svg+xml");
+res.send(svg);
 
 
 }
