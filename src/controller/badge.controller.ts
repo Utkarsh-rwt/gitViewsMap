@@ -147,8 +147,13 @@ try{                                                      // storing the data of
     console.log(`failed to get visitors info ${err}`)
 
 }
+
 res.setHeader("Content-Type", "image/svg+xml");
-res.send(svg);
+res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+res.setHeader("Pragma", "no-cache");
+res.setHeader("Expires", "0");
+
+return res.send(svg);
 
 
 }
