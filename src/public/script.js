@@ -12,7 +12,7 @@ const username = window.location.pathname.slice(1);
 async function loadMap() {
   try {
     const response = await fetch(
-      `/api/map/${username}`
+      `/map/${username}`
     );
 
     const visitors = await response.json();
