@@ -119,34 +119,8 @@ async function getBadge(req: Request,res: Response) {
         >ViewMap</text>
 
     </g>
-</svg>
-`;
+</svg>`
 
-try{                                                      // storing the data of visitor
-
-    const ip = req.ip;
-    let  information:any = await  fetch(`http://ip-api.com/json/${ip}`);
-    information =  await information.json();
-
-    if (information.status !=="success") {
-        res.send(svg).status(288);
-        throw new Error("Unable to fetch location");
-        }
-
-   
-        await Visitor.create({
- 
-        visitedGitHubUsername:username as string,
-        ip:ip,
-      latitude:information.lat,
-      longitude:information.lon
-
-    })
-
-}catch(err){
-    console.log(`failed to get visitors info ${err}`)
-
-}
 
 res.setHeader(
   "Cache-Control",
