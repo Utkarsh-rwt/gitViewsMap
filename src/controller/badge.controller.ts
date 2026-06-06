@@ -31,8 +31,8 @@ async function getBadge(req: Request,res: Response) {
     throw new Error (`unable to create or update userstats , error recieved - ${err}`);
 };
 
-       const svg = `
-<svg xmlns="http://www.w3.org/2000/svg" width="185" height="20" role="img" aria-label="Profile Views: ${views}">
+     const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="20" role="img" aria-label="Profile Views: ${views}">
     <title>GitViewsMap</title>
 
     <filter id="blur">
@@ -45,7 +45,7 @@ async function getBadge(req: Request,res: Response) {
     </linearGradient>
 
     <clipPath id="r">
-        <rect width="185" height="20" rx="3" fill="#fff" />
+        <rect width="220" height="20" rx="3" fill="#fff" />
     </clipPath>
 
     <g clip-path="url(#r)">
@@ -53,12 +53,12 @@ async function getBadge(req: Request,res: Response) {
         <rect width="80" height="20" fill="#555" />
 
         <!-- Count -->
-        <rect x="80" width="45" height="20" fill="#007ec6" />
+        <rect x="80" width="70" height="20" fill="#007ec6" />
 
         <!-- ViewMap -->
-        <rect x="125" width="60" height="20" fill="#0366d6" />
+        <rect x="150" width="70" height="20" fill="#0366d6" />
 
-        <rect width="185" height="20" fill="url(#s)" />
+        <rect width="220" height="20" fill="url(#s)" />
     </g>
 
     <g
@@ -69,20 +69,89 @@ async function getBadge(req: Request,res: Response) {
         font-size="110"
     >
 
+        <!-- Profile Views shadow -->
+        <text
+            aria-hidden="true"
+            x="400"
+            y="150"
+            fill="#010101"
+            fill-opacity=".8"
+            filter="url(#blur)"
+            transform="scale(.1)"
+        >Profile Views</text>
+
+        <text
+            aria-hidden="true"
+            x="400"
+            y="150"
+            fill="#010101"
+            fill-opacity=".3"
+            transform="scale(.1)"
+        >Profile Views</text>
+
         <!-- Profile Views -->
-        <text aria-hidden="true" x="400" y="150" fill="#010101" fill-opacity=".8" filter="url(#blur)" transform="scale(.1)">Profile Views</text>
-        <text aria-hidden="true" x="400" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)">Profile Views</text>
-        <text x="400" y="140" transform="scale(.1)" fill="#fff">Profile Views</text>
+        <text
+            x="400"
+            y="140"
+            transform="scale(.1)"
+            fill="#fff"
+        >Profile Views</text>
+
+        <!-- Count shadow -->
+        <text
+            aria-hidden="true"
+            x="1150"
+            y="150"
+            fill="#010101"
+            fill-opacity=".8"
+            filter="url(#blur)"
+            transform="scale(.1)"
+        >${views}</text>
+
+        <text
+            aria-hidden="true"
+            x="1150"
+            y="150"
+            fill="#010101"
+            fill-opacity=".3"
+            transform="scale(.1)"
+        >${views}</text>
 
         <!-- Count -->
-        <text aria-hidden="true" x="1025" y="150" fill="#010101" fill-opacity=".8" filter="url(#blur)" transform="scale(.1)">${views}</text>
-        <text aria-hidden="true" x="1025" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)">${views}</text>
-        <text x="1025" y="140" transform="scale(.1)" fill="#fff">${views}</text>
+        <text
+            x="1150"
+            y="140"
+            transform="scale(.1)"
+            fill="#fff"
+        >${views}</text>
+
+        <!-- ViewMap shadow -->
+        <text
+            aria-hidden="true"
+            x="1850"
+            y="150"
+            fill="#010101"
+            fill-opacity=".8"
+            filter="url(#blur)"
+            transform="scale(.1)"
+        >ViewMap ↗</text>
+
+        <text
+            aria-hidden="true"
+            x="1850"
+            y="150"
+            fill="#010101"
+            fill-opacity=".3"
+            transform="scale(.1)"
+        >ViewMap ↗</text>
 
         <!-- ViewMap -->
-        <text aria-hidden="true" x="1550" y="150" fill="#010101" fill-opacity=".8" filter="url(#blur)" transform="scale(.1)">ViewMap ↗</text>
-        <text aria-hidden="true" x="1550" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)">ViewMap ↗</text>
-        <text x="1550" y="140" transform="scale(.1)" fill="#fff">ViewMap ↗</text>
+        <text
+            x="1850"
+            y="140"
+            transform="scale(.1)"
+            fill="#fff"
+        >ViewMap ↗</text>
 
     </g>
 </svg>`;
