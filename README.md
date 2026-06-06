@@ -20,20 +20,20 @@ The project is already deployed and ready to use.
 
 ## How It Works
 
-When the badge is loaded:
 
-1. A view is recorded for the specified GitHub username.
-2. The visitor's approximate location is determined using their IP address.
-3. Location data is stored in the database.
-4. An SVG badge containing the current view count is returned.
 
-When a user visits:
+When the badge is loaded in a GitHub README using:
 
-```text
-https://gitviewsmap.onrender.com/YOUR_GITHUB_USERNAME
+```html
+<img src="https://gitviewsmap.onrender.com/badge/YOUR_GITHUB_USERNAME.svg" alt="GitViewsMap Visitor Badge">
 ```
 
-an interactive map is displayed showing all recorded visitor locations.
+GitHub requests the SVG from the server. The server receives this request and increments the profile view count. To ensure that each badge load results in a fresh request, the response is served with cache-control headers that disable caching. This prevents browsers and intermediaries from reusing stale copies of the badge and allows the view counter to update correctly.
+
+However, because GitHub proxies image requests, the actual visitor's IP address is not available to the server. As a result, visitor locations cannot be collected from badge loads alone.
+
+To collect location data, the badge links to the visitor map page. When a visitor clicks the badge, their browser is redirected directly to the map page. Since this request comes directly from the visitor rather than through GitHub's image proxy, the server can access the visitor's public IP address and estimate their geographic location, which is then displayed on the map.
+
 
 
 ---
