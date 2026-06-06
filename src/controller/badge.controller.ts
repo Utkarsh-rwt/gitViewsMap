@@ -128,8 +128,9 @@ res.setHeader(
 );
 res.setHeader("Pragma", "no-cache");
 res.setHeader("Expires", "0");
-
+res.setHeader("Content-Type", "image/svg+xml");
 return res.send(svg);
+
 
 
 }
