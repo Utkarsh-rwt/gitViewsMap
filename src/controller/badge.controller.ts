@@ -9,9 +9,9 @@ async function getBadge(req: Request,res: Response) {
     const userViewed = await User.findOne({
     githubUsername: username
   });
-  let views = 0;
+    let views = 0;
 
-try {                                                       // updating or creating the count of user
+    try {                                                       // updating or creating the count of user
   if(!userViewed){
    await User.create({
         githubUsername: String(username),
@@ -19,14 +19,14 @@ try {                                                       // updating or creat
 
 
 
-    });
+            });
   }
   else{
     userViewed.count +=1;
     views=userViewed.count;
-    await userViewed.save();
+            await userViewed.save();
 
-  }
+    }
 } catch(err){
     throw new Error (`unable to create or update userstats , error recieved - ${err}`);
 };
@@ -70,10 +70,10 @@ try{                                                      // storing the data of
     if (information.status !=="success") {
         res.send(svg).status(288);
         throw new Error("Unable to fetch location");
-}
-  
+        }
+
    
-    await Visitor.create({
+        await Visitor.create({
  
         visitedGitHubUsername:username as string,
         ip:ip,
